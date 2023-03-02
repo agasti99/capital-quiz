@@ -8,6 +8,7 @@ export default function App() {
   const [answer, setAnswer] = useState('');
   const [correct, setCorrect] = useState(false);
   const [showCongrats, setShowCongrats] = useState(false);
+  const [incorrect, setIncorrect] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -33,6 +34,7 @@ export default function App() {
     setAnswer(countries[index]['capital']);
     setCapital('');
     setShowCongrats(false);
+    setIncorrect(false);
   };
 
   useEffect(() => {
@@ -45,6 +47,8 @@ export default function App() {
     e.preventDefault();
     if (capital.toLowerCase() === answer.toLowerCase()) {
       setCorrect(true);
+    } else if (capital.toLowerCase() != answer.toLowerCase()) {
+      setIncorrect(true);
     }
   };
 
@@ -67,6 +71,11 @@ export default function App() {
       <button onClick={resetCountry}>reset quiz</button>
       {showCongrats && (
         <p>Congrats you have entered the correct capital of {country}</p>
+      )}
+      {incorrect && (
+        <p>
+          The correct answer for the capital of {country} is {answer}.
+        </p>
       )}
     </div>
   );
