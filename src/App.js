@@ -50,7 +50,7 @@ export default function App() {
 
   return (
     <div>
-      <h2>Capital quiz</h2>
+      <h2>Capitals quiz</h2>
       <form onSubmit={handleSubmit}>
         <label>Enter capital name for: {country}</label>{' '}
         <input
