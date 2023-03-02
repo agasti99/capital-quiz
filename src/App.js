@@ -7,7 +7,7 @@ export default function App() {
   const [country, setCountry] = useState('');
   const [answer, setAnswer] = useState('');
   const [correct, setCorrect] = useState(false);
-  const [showCongrats, setShowCongrats] = useState(false)
+  const [showCongrats, setShowCongrats] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -15,7 +15,6 @@ export default function App() {
         'https://countriesnow.space/api/v0.1/countries/capital'
       );
       const data = await res.json();
-
       setCountries(data.data);
     })();
   }, []);
@@ -32,6 +31,8 @@ export default function App() {
     const index = Math.floor(Math.random() * countries.length);
     setCountry(countries[index]['name']);
     setAnswer(countries[index]['capital']);
+    setCapital('');
+    setShowCongrats(false);
   };
 
   useEffect(() => {
@@ -57,6 +58,7 @@ export default function App() {
           value={capital}
           onChange={(e) => setCapital(e.target.value)}
         />
+        <br />
         <button type="button" onClick={handleSubmit}>
           Submit
         </button>
