@@ -53,30 +53,45 @@ export default function App() {
   };
 
   return (
-    <div>
-      <h2>Capitals quiz</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Enter capital name for: {country}</label>{' '}
-        <input
-          type="text"
-          value={capital}
-          onChange={(e) => setCapital(e.target.value)}
-        />
-        <br />
-        <button type="button" onClick={handleSubmit}>
-          Submit
-        </button>
-      </form>
-      <br />
-      <button onClick={resetCountry}>reset quiz</button>
-      {showCongrats && (
-        <p>Congrats you have entered the correct capital of {country}</p>
-      )}
-      {incorrect && (
-        <p>
-          The correct answer for the capital of {country} is {answer}.
-        </p>
-      )}
+    <div className="body">
+      <div className="center">
+        <div className="main">
+          <h2>Capitals quiz</h2>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Enter capital name for: {country}
+              <br />
+            </label>{' '}
+            <br />
+            <input
+              type="text"
+              value={capital}
+              onChange={(e) => setCapital(e.target.value)}
+              placeholder="Enter capital here"
+              required="required"
+            />
+            <br />
+            <button type="button" onClick={handleSubmit} class="button">
+              Submit
+            </button>
+          </form>
+
+          <br />
+          <button onClick={resetCountry} class="button">
+            Reset Quiz
+          </button>
+        </div>
+        {showCongrats && (
+          <p className="congrats">
+            Congrats you have entered the correct capital of {country}
+          </p>
+        )}
+        {incorrect && (
+          <p className="congrats">
+            The correct answer for the capital of {country} is '{answer}'.
+          </p>
+        )}
+      </div>
     </div>
   );
 }
